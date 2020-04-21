@@ -27,8 +27,7 @@
 void loop() {
     for(LED = 3; LED <= 13; LED++){
         if(LED == 8){
-            digitalWrite(LED,0);
-         continue;
+            digitalWrite(LED,0); 
         }
         digitalWrite(LED,1);
         delay(time);
@@ -39,7 +38,7 @@ void loop() {
             time = time /2;
             Serial.println("Faster X 2(Current Speed : X" + String(tale) +")");
             tone(8,400,100);
-            delay(700);
+            delay(500);
             
         }
         else{
@@ -51,7 +50,6 @@ void loop() {
     {
         if(LED ==8){
             digitalWrite(LED,0);
-          continue;
         }
         digitalWrite(LED,1);
         delay(time);
@@ -63,7 +61,7 @@ void loop() {
              time = time /2;
              Serial.println("Faster X 2(Current Speed : X" + String(tale) +")");
              tone(8,400,100);
-             delay(700);
+             delay(500);
         }
         else
         {
