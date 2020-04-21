@@ -25,7 +25,7 @@
   int time = 100;
 
 void loop() {
-    for(LED == 3; LED <= 13; LED++){
+    for(LED = 3; LED <= 13; LED++){
         if(LED == 8){
             digitalWrite(LED,0);
          continue;
