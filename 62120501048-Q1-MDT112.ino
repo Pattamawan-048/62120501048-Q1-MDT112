@@ -1,94 +1,73 @@
- #define note C4 200
- const int Speakerpin1 = 1;
- const int Speakerpin2 = 2;
- const int Speakerpin3 = 3;
- const int Speakerpin4 = 4;
- const int Speakerpin5 = 5;
- const int Speakerpin6 = 6;
- const int Speakerpin7 = 7;
- const int Speakerpin8 = 8;
- const int Speakerpin9 = 9;
- const int Speakerpin10 = 10;
- const int Speakerpin11 = 11;
- const int Speakerpin12 = 12;
- const int Speakerpin13 = 13;
-
-void setup() {
-     pinMode(Speakerpin1, OUTPUT);
-     pinMode(Speakerpin2, OUTPUT);
-     pinMode(Speakerpin3, OUTPUT);
-     pinMode(Speakerpin4, OUTPUT);
-     pinMode(Speakerpin5, OUTPUT);
-     pinMode(Speakerpin6, OUTPUT);
-     pinMode(Speakerpin7, OUTPUT);
-     pinMode(Speakerpin8, OUTPUT);
-     pinMode(Speakerpin9, OUTPUT);
-     pinMode(Speakerpin10, OUTPUT);
-     pinMode(Speakerpin11, OUTPUT);
-     pinMode(Speakerpin12, OUTPUT);
-     pinMode(Speakerpin13, OUTPUT);
+ void setup() {
+     Serial.begin(9600);
+     pinMode(2, INPUT_PULLUP);
+     pinMode(3, OUTPUT);
+     pinMode(4, OUTPUT);
+     pinMode(5, OUTPUT);
+     pinMode(6, OUTPUT);
+     pinMode(7, OUTPUT);
+     pinMode(8, OUTPUT);
+     pinMode(9, OUTPUT);
+     pinMode(10, OUTPUT);
+     pinMode(11, OUTPUT);
+     pinMode(12, OUTPUT);
+     pinMode(13, OUTPUT);
+     
+     for(int buzzer = 3; buzzer <= 13; buzzer++){ //ประกาศตัวแปร buzzer
+         pinMode(buzzer,OUTPUT);
+     }
+     tone(8,200,500); //เสียงครั้งแรก
+     delay(250);      //หน่วงเวลา
+     tone(8,400,100);
 }
-void loop() {
-     tone(Speakerpin1, 200,500);
-     delay(500);
-     tone(Speakerpin2, 200,500);
-     delay(500);
-     tone(Speakerpin3, 200,500);
-     delay(500);
-     tone(Speakerpin4, 200,500);
-     delay(500);
-     tone(Speakerpin5, 200,500);
-     delay(500);
-     tone(Speakerpin6, 200,500);
-     delay(500);
-     tone(Speakerpin7, 200,500);
-     delay(500);
-     tone(Speakerpin8, 200,500);
-     delay(500);
-     tone(Speakerpin9, 200,500);
-     delay(500);
-     tone(Speakerpin10, 200,500);
-     delay(500);
-     tone(Speakerpin11, 200,500);
-     delay(500);
-     tone(Speakerpin12, 200,500);
-     delay(500);
-     tone(Speakerpin13, 200,500);
-     delay(500);
+  int LED = 3;
+  int tale = 1;
+  int time = 100;
 
-     digitalWrite(2,1);
-     delay(500);
-     digitalWrite(2,0);
-     digitalWrite(3,1);
-     digitalWrite(3,0);
-     digitalWrite(4,1);
-     delay(500);
-     digitalWrite(4,0);
-     digitalWrite(5,1);
-     delay(500);
-     digitalWrite(5,0);
-     digitalWrite(6,1);
-     delay(500);
-     digitalWrite(6,0);
-     digitalWrite(7,1);
-     delay(500);
-     digitalWrite(7,0);
-     digitalWrite(8,1);
-     delay(500);
-     digitalWrite(8,0);
-     digitalWrite(9,1);
-     delay(500);
-     digitalWrite(9,0);
-     digitalWrite(10,1);
-     delay(500);
-     digitalWrite(10,0);
-     digitalWrite(11,1);
-     delay(500);
-     digitalWrite(11,0);
-     digitalWrite(12,1);
-     delay(500);
-     digitalWrite(12,0);
-     digitalWrite(13,1);
-     delay(500);
-     digitalWrite(13,0);
+void loop() {
+    for(LED == 3; LED <= 13; LED++){
+        if(LED == 8){
+            digitalWrite(LED,0);
+         continue;
+        }
+        digitalWrite(LED,1);
+        delay(time);
+        digitalWrite(LED,0);
+
+        if(digitalRead(2)==0){
+            tale = tale * 2; //ไฟวิ่งเพิ่มขึ้น2เท่า
+            time = time /2;
+            Serial.println("Faster X 2(Current Speed : X" + String(tale) +")");
+            tone(8,400,100);
+            delay(700);
+            
+        }
+        else{
+
+        }
+
+    }
+    for(LED = 13; LED >= 3; LED--)
+    {
+        if(LED ==8){
+            digitalWrite(LED,0);
+          continue;
+        }
+        digitalWrite(LED,1);
+        delay(time);
+        digitalWrite(LED,0);
+
+        if(digitalRead(2)==0){
+             
+             tale = tale * 2;
+             time = time /2;
+             Serial.println("Faster X 2(Current Speed : X" + String(tale) +")");
+             tone(8,400,100);
+             delay(700);
+        }
+        else
+        {
+
+        }
+    }
 }
